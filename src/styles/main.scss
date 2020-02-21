@@ -1,0 +1,67 @@
+@import "reset";
+@import "colors";
+
+$mainFont: Helvetica;
+
+@mixin bordered($color: #000, $width: 2px) {
+	border: $width solid $color;
+}
+
+@mixin text($size: 18px, $weight: 400, $transform: none, $decoration: none) {
+    font: {
+        family: $mainFont;
+        size: $size;
+        weight: $weight;
+    }
+    text: {
+        transform: $transform;
+        decoration: $decoration;
+    }
+}
+
+h1 {
+    @include text($size: 24px, $weight: 700, $transform: uppercase)
+}
+
+p {
+    @include text();
+}
+
+
+#test {
+	position: absolute;
+	top: 0;
+	left: 50%;
+
+	li {
+		color: $text_color;
+        font-weight: bold;
+        @include text();
+	}
+}
+
+header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	@include bordered($width 1px);
+}
+
+#background {
+	height: 100vh;
+	width: 100vw;
+	background: url("/images/background.jpg") no-repeat;
+	background-size: 150% 150%;
+}
+
+#logo_section {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	text-align: center;
+	pointer-events: none;
+	img {
+		pointer-events: none;
+	}
+}
